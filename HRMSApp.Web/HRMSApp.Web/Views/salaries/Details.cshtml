@@ -1,0 +1,48 @@
+﻿@model HRMSApp.Data.Models.Salary
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>salary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salary1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FromDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FromDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { empNo = Model.EmpNo, salary1 = Model.Salary1 }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
