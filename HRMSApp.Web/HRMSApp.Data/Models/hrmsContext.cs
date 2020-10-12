@@ -64,6 +64,10 @@ namespace HRMSApp.Data.Models
                 entity.HasIndex(e => e.EmpNo)
                     .HasName("emp_no");
 
+                entity.HasIndex(e => new { e.DeptNo, e.EmpNo })
+                    .HasName("UC_dept_emp")
+                    .IsUnique();
+
                 entity.Property(e => e.DeptNo)
                     .HasColumnName("dept_no")
                     .HasMaxLength(4)
@@ -80,8 +84,8 @@ namespace HRMSApp.Data.Models
                     .HasColumnType("date");
 
                 entity.HasOne(d => d.DeptNoNavigation)
-                    .WithOne(p => p.DeptEmp)
-                    .HasForeignKey<DeptEmp>(d => d.DeptNo)
+                    .WithMany(p => p.DeptEmp)
+                    .HasForeignKey(d => d.DeptNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Dept_Emp_ibfk_1");
 
@@ -91,6 +95,47 @@ namespace HRMSApp.Data.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Dept_Emp_ibfk_2");
             });
+
+            //modelBuilder.Entity<DeptEmp>(entity =>
+            //{
+            //    entity.HasKey(e => new { e.DeptNo, e.EmpNo })
+            //        .HasName("PRIMARY");
+
+            //    entity.ToTable("dept_emp");
+
+            //    entity.HasIndex(e => e.DeptNo)
+            //        .HasName("dept_no");
+
+            //    entity.HasIndex(e => e.EmpNo)
+            //        .HasName("emp_no");
+
+            //    entity.Property(e => e.DeptNo)
+            //        .HasColumnName("dept_no")
+            //        .HasMaxLength(4)
+            //        .IsFixedLength();
+
+            //    entity.Property(e => e.EmpNo).HasColumnName("emp_no");
+
+            //    entity.Property(e => e.FromDate)
+            //        .HasColumnName("from_date")
+            //        .HasColumnType("date");
+
+            //    entity.Property(e => e.ToDate)
+            //        .HasColumnName("to_date")
+            //        .HasColumnType("date");
+
+            //    entity.HasOne(d => d.DeptNoNavigation)
+            //        .WithOne(p => p.DeptEmp)
+            //        .HasForeignKey<DeptEmp>(d => d.DeptNo)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("Dept_Emp_ibfk_1");
+
+            //    entity.HasOne(d => d.EmpNoNavigation)
+            //        .WithMany(p => p.DeptEmp)
+            //        .HasForeignKey(d => d.EmpNo)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("Dept_Emp_ibfk_2");
+            //});
 
             modelBuilder.Entity<DeptManager>(entity =>
             {

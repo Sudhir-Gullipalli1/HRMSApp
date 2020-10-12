@@ -1,1 +1,7 @@
 /HRMSApp.Web/.vs
+/HRMSApp.Web/HRMSApp.Business/obj
+/HRMSApp.Web/HRMSApp.Data/obj
+/HRMSApp.Web/HRMSApp.Web/obj
+/HRMSApp.Web/HRMSApp.Web/bin
+/HRMSApp.Web/HRMSApp.Data/bin
+/HRMSApp.Web/HRMSApp.Business/bin
